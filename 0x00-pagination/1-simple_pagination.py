@@ -35,6 +35,10 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """
+        verifies that arguments gotten are integers greater than 0 and
+        returns a list of lists of appropriate datasets
+        """
         assert type(page) == int and page > 0
         assert type(page_size) == int and page_size > 0
 
