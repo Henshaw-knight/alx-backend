@@ -69,16 +69,14 @@ class Server:
         prev_page: number of the previous page, None if no prev. page
         total_pages: the total number of pages in the dataset as an integer
         """
-        with open(self.DATA_FILE) as file:
-            csv_reader = csv.reader(file)
-            row_count = sum(1 for row in csv_reader) - 1
-            # subtract to remove header count
-        dataset = self.get_page(page, page_size)
+        dataset = self.dataset()
+        end = index_range(page, page_size)[1]
+        page_data = self.get_page(page, page_size)
         return {
-                "page_size": len(dataset),
+                "page_size": len(page_data),
                 "page": page,
-                "data": dataset,
-                "next_page": None if len(dataset) < 1 else page + 1,
+                "data": page_data,
+                "next_page": None if end > len(dataset) else page + 1,
                 "prev_page": None if page <= 1 else page - 1,
-                "total_pages": math.ceil(row_count / page_size)
+                "total_pages": math.ceil(len(dataset) / page_size)
                 }
