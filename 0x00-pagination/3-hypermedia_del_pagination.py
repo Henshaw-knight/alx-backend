@@ -48,7 +48,8 @@ class Server:
             data: the actual page of the dataset.
         """
         dataset = self.indexed_dataset()
-        assert index is not None and index >= 0 and index <= max(dataset.keys())
+        assert index is not None and index >= 0 and index <= max(
+                dataset.keys())
         page_data = []
         data_count = 0
         next_index = None
