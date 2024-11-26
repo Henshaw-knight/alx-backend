@@ -28,7 +28,7 @@ class MRUCache(BaseCaching):
             self.stack.append(key)
 
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                # discard last item put in cache (MRU algorithm)
+                # discard MRU item in cache (MRU algorithm)
                 most_recently_used_key = self.stack.pop(-2)
                 del self.cache_data[most_recently_used_key]
                 print("DISCARD: {}".format(most_recently_used_key))

@@ -28,7 +28,7 @@ class LRUCache(BaseCaching):
             self.stack.append(key)
 
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                # discard last item put in cache (LRU algorithm)
+                # discard LRU item in cache (LRU algorithm)
                 least_recently_used_key = self.stack.pop(0)
                 del self.cache_data[least_recently_used_key]
                 print("DISCARD: {}".format(least_recently_used_key))
