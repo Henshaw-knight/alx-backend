@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" LIFOCache class module """
+""" LRUCache class module """
 BaseCaching = __import__('base_caching').BaseCaching
 
 
